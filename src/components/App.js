@@ -3,16 +3,19 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux'; 
 import * as actions from '../redux/actions'; 
 import Counter from './Counter';
+import Todo from "./Todo";
 
 class App extends Component {
 
   render() {
-    const { counter, actions } = this.props; 
+    const { todos, actions } = this.props; 
+
     return (
       <div className="App">
-        <h1>Bonjour</h1>
+        <h1>Bonjour { todos.length }</h1>
         <Counter />
         <button onClick={actions.increment}>increment</button>
+        <Todo />
       </div>
     );
   }
@@ -20,8 +23,8 @@ class App extends Component {
 
 function mapStateToProps(state) { 
   return {
-    counter: state.counter
-    }; 
+    todos: state.todos
+  }; 
 }
 
 function mapDispatchToProps(dispatch) {
